@@ -7,6 +7,8 @@
     <groupId>termo-1</groupId>
     <artifactId>termo-1</artifactId>
     <version>0.9-BETA</version>
+    <url>https://github.com/Explicite/termo-1.git</url>
+
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -17,7 +19,44 @@
 
     <properties>
         <jdk.version>1.7</jdk.version>
+        <github.global.server>github</github.global.server>
     </properties>
 
+    <distributionManagement>
+        <repository>
+            <id>internal.repo</id>
+            <name>Temporary Staging Repository</name>
+            <url>file://${project.build.directory}/mvn-repo</url>
+        </repository>
+    </distributionManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.github.github</groupId>
+                <artifactId>site-maven-plugin</artifactId>
+                <version>0.9</version>
+                <configuration>
+                    <message>Maven artifacts for ${project.version}</message>
+                    <noJekyll>true</noJekyll>
+                    <outputDirectory>${project.build.directory}/mvn-repo</outputDirectory>
+                    <branch>refs/heads/mvn-repo</branch>
+                    <includes>
+                        <include>**/*</include>
+                    </includes>
+                    <repositoryName>termo-1</repositoryName>
+                    <repositoryOwner>Explicite</repositoryOwner>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>site</goal>
+                        </goals>
+                        <phase>deploy</phase>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
