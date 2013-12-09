@@ -41,9 +41,7 @@
                     <noJekyll>true</noJekyll>
                     <outputDirectory>${project.build.directory}/mvn-repo</outputDirectory>
                     <branch>refs/heads/mvn-repo</branch>
-                    <includes>
-                        <include>**/*</include>
-                    </includes>
+                    <includes><include>**/*</include></includes>
                     <repositoryName>termo-1</repositoryName>
                     <repositoryOwner>Explicite</repositoryOwner>
                 </configuration>
